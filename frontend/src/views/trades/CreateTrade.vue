@@ -65,9 +65,9 @@ onMounted(async () => {
   <div style="max-width: 640px; margin: 0 auto;">
     <div style="margin-bottom: 24px;">
       <h2 style="margin: 0 0 4px; font-size: 22px;">{{ isEdit ? '编辑商品' : '发布商品' }}</h2>
-      <p style="margin: 0; color: #909399; font-size: 13px;">填写商品信息，方便买家联系你</p>
+      <p style="margin: 0; color: #8a7a6a; font-size: 13px;">填写商品信息，方便买家联系你</p>
     </div>
-    <div style="background: #fff; border-radius: 12px; border: 1px solid #f0f0f0; padding: 28px;">
+    <div style="background: #fff; border-radius: 12px; border: 1px solid #e0d5c0; padding: 28px;">
       <el-form :model="form" label-position="top" @submit.prevent="handleSubmit">
         <el-form-item label="标题"><el-input v-model="form.title" placeholder="请填写商品名称" size="large" /></el-form-item>
         <el-form-item label="描述"><el-input v-model="form.description" type="textarea" :rows="4" placeholder="描述商品成色、规格等..." /></el-form-item>
@@ -82,10 +82,10 @@ onMounted(async () => {
         <el-form-item label="商品图片">
             <el-upload :http-request="handleUpload" :show-file-list="false" accept="image/*" :disabled="uploading">
               <el-button :loading="uploading" style="border-radius: 8px;">点击上传</el-button>
-              <template #tip><span style="margin-left: 8px; font-size: 12px; color: #909399;">支持 jpg/png/gif/webp，单文件不超过 5MB</span></template>
+              <template #tip><span style="margin-left: 8px; font-size: 12px; color: #8a7a6a;">支持 jpg/png/gif/webp，单文件不超过 5MB</span></template>
             </el-upload>
             <div v-if="form.images" style="margin-top: 8px; display: flex; gap: 8px; flex-wrap: wrap;">
-              <div v-for="(url, i) in form.images.split(',')" :key="i" style="position: relative; width: 80px; height: 80px; border-radius: 6px; overflow: hidden; border: 1px solid #e4e7ed;">
+              <div v-for="(url, i) in form.images.split(',')" :key="i" style="position: relative; width: 80px; height: 80px; border-radius: 6px; overflow: hidden; border: 1px solid #e0d5c0;">
                 <img :src="url" style="width: 100%; height: 100%; object-fit: cover;" />
                 <span style="position: absolute; top: 2px; right: 4px; font-size: 16px; color: #f56c6c; cursor: pointer;" @click="form.images = form.images.split(',').filter((_,j) => j !== i).join(',')">×</span>
               </div>

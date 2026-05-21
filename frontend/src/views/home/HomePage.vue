@@ -60,18 +60,18 @@ function formatTime(t) {
 
 // 四大功能模块配置（路径、名称、描述、图标、颜色）
 const modules = [
-  { path: '/questions', name: '问答互助', desc: '提出你的问题，帮助他人解答', icon: '💬', color: '#1a73e8', bg: '#e8f0fe' },
-  { path: '/trades', name: '二手交易', desc: '买卖二手物品，让资源循环利用', icon: '🏪', color: '#34a853', bg: '#e6f4ea' },
-  { path: '/forum', name: '校园论坛', desc: '自由交流，分享校园生活', icon: '📝', color: '#f9ab00', bg: '#fef7e0' },
-  { path: '/lost-found', name: '失物招领', desc: '发布丢失/捡到的物品信息', icon: '🔍', color: '#ea4335', bg: '#fce8e6' },
+  { path: '/questions', name: '问答互助', desc: '提问 · 解答 · 交流', icon: '💬', color: '#4a6a8a', bg: '#e6edf3' },
+  { path: '/trades', name: '二手交易', desc: '转让 · 求购 · 交换', icon: '🏪', color: '#5a7a4a', bg: '#e6ede4' },
+  { path: '/forum', name: '校园论坛', desc: '分享 · 讨论 · 记录', icon: '📝', color: '#9a6a30', bg: '#f5ede0' },
+  { path: '/lost-found', name: '失物招领', desc: '遗失 · 寻找 · 归还', icon: '🔍', color: '#8a4a4a', bg: '#f3e6e6' },
 ]
 
 // 统计数据卡片配置（标签、对应字段名、颜色）
 const statCards = [
-  { label: '问答', key: 'questions', color: '#1a73e8' },
-  { label: '二手', key: 'trades', color: '#34a853' },
-  { label: '论坛帖子', key: 'posts', color: '#f9ab00' },
-  { label: '失物招领', key: 'lostFound', color: '#ea4335' },
+  { label: '累计问答', key: 'questions', color: '#4a6a8a' },
+  { label: '交易物品', key: 'trades', color: '#5a7a4a' },
+  { label: '论坛帖子', key: 'posts', color: '#9a6a30' },
+  { label: '失物招领', key: 'lostFound', color: '#8a4a4a' },
 ]
 
 onMounted(() => { fetchStats(); fetchAnnouncements() })
@@ -80,20 +80,13 @@ onMounted(() => { fetchStats(); fetchAnnouncements() })
 <template>
   <div>
     <div class="hero-section">
-      <div class="hero-shapes">
-        <div class="shape shape-1"></div>
-        <div class="shape shape-2"></div>
-        <div class="shape shape-3"></div>
-        <div class="shape shape-4"></div>
-      </div>
       <div class="hero-content">
-        <h1 class="hero-title">欢迎来到校园互助平台</h1>
-        <p class="hero-subtitle">有问题？想买卖二手？丢了东西？来这里就对了</p>
+        <h1 class="hero-title">校园互助，温暖相伴</h1>
+        <p class="hero-subtitle">知识共享 · 资源流转 · 社区互助 — 你的校园生活助手</p>
         <div class="hero-search">
           <el-input v-model="keyword" placeholder="全局搜索问题、商品、帖子..." size="large" clearable @keyup.enter="doSearch"
-            class="hero-search-input"
-            :style="{ '--el-input-bg-color': 'rgba(255,255,255,0.92)', '--el-input-border-color': 'rgba(255,255,255,0.3)', '--el-input-hover-border-color': 'rgba(255,255,255,0.5)', '--el-input-focus-border-color': '#fff', '--el-input-text-color': '#303133' }" />
-          <el-button type="warning" size="large" :loading="searching" @click="doSearch" class="hero-search-btn">搜索</el-button>
+            class="hero-search-input" />
+          <el-button size="large" :loading="searching" @click="doSearch" class="hero-search-btn">搜索</el-button>
         </div>
       </div>
     </div>
@@ -106,16 +99,16 @@ onMounted(() => { fetchStats(); fetchAnnouncements() })
         </div>
         <el-divider style="margin: 12px 0;" />
         <div v-if="searchResults.questions?.length">
-          <div style="font-size: 12px; color: #1a73e8; font-weight: 600; margin: 8px 0 4px;">💬 问答</div>
-          <div v-for="q in searchResults.questions" :key="q.id" style="cursor: pointer; padding: 6px 0; border-bottom: 1px solid #f0f0f0; font-size: 14px;" @click="router.push(`/questions/${q.id}`)">• {{ q.title }}</div>
+          <div style="font-size: 12px; color: #4a6a8a; font-weight: 600; margin: 8px 0 4px;">💬 问答</div>
+          <div v-for="q in searchResults.questions" :key="q.id" style="cursor: pointer; padding: 6px 0; border-bottom: 1px solid #e8e0d0; font-size: 14px;" @click="router.push(`/questions/${q.id}`)">• {{ q.title }}</div>
         </div>
         <div v-if="searchResults.trades?.length">
-          <div style="font-size: 12px; color: #34a853; font-weight: 600; margin: 8px 0 4px;">🏪 二手</div>
-          <div v-for="t in searchResults.trades" :key="t.id" style="cursor: pointer; padding: 6px 0; border-bottom: 1px solid #f0f0f0; font-size: 14px;" @click="router.push(`/trades/${t.id}`)">• {{ t.title }}</div>
+          <div style="font-size: 12px; color: #5a7a4a; font-weight: 600; margin: 8px 0 4px;">🏪 二手</div>
+          <div v-for="t in searchResults.trades" :key="t.id" style="cursor: pointer; padding: 6px 0; border-bottom: 1px solid #e8e0d0; font-size: 14px;" @click="router.push(`/trades/${t.id}`)">• {{ t.title }}</div>
         </div>
         <div v-if="searchResults.posts?.length">
-          <div style="font-size: 12px; color: #f9ab00; font-weight: 600; margin: 8px 0 4px;">📝 论坛</div>
-          <div v-for="p in searchResults.posts" :key="p.id" style="cursor: pointer; padding: 6px 0; border-bottom: 1px solid #f0f0f0; font-size: 14px;" @click="router.push(`/forum/${p.id}`)">• {{ p.title }}</div>
+          <div style="font-size: 12px; color: #9a6a30; font-weight: 600; margin: 8px 0 4px;">📝 论坛</div>
+          <div v-for="p in searchResults.posts" :key="p.id" style="cursor: pointer; padding: 6px 0; border-bottom: 1px solid #e8e0d0; font-size: 14px;" @click="router.push(`/forum/${p.id}`)">• {{ p.title }}</div>
         </div>
         <div v-if="!searchResults.questions?.length && !searchResults.trades?.length && !searchResults.posts?.length" style="color: #909399; padding: 8px 0; text-align: center;">未找到相关内容</div>
       </el-card>
@@ -131,7 +124,7 @@ onMounted(() => { fetchStats(); fetchAnnouncements() })
     <div v-if="pinnedAnnouncements.length > 0" style="margin-bottom: 24px;">
       <div v-for="a in pinnedAnnouncements" :key="a.id" class="pinned-card">
         <div class="pinned-header">
-          <el-tag size="small" type="danger" style="border-radius: 4px;">置顶</el-tag>
+          <el-tag size="small" style="background-color: #8a4a4a; color: #fff; border: none; border-radius: 4px;">置顶</el-tag>
           <strong>{{ a.title }}</strong>
           <span class="pinned-meta">{{ a.adminName }} · {{ formatTime(a.createdAt) }}</span>
         </div>
@@ -174,140 +167,124 @@ onMounted(() => { fetchStats(); fetchAnnouncements() })
   margin: -24px -24px 28px;
   padding: 56px 24px 60px;
   text-align: center;
-  color: #fff;
-  background: linear-gradient(135deg, #1a73e8 0%, #1557b0 50%, #0d47a1 100%);
+  color: #f5f0e0;
+  background: linear-gradient(135deg, #5c6e3d 0%, #7a8a5a 40%, #6a7a4a 100%);
 }
 .hero-section::before {
   content: '';
   position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='40' fill='none' stroke='rgba(255,255,255,0.06)' stroke-width='1'/%3E%3C/svg%3E");
-  background-size: 120px 120px;
-}
-.hero-shapes {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
+  top: -80px; right: -60px;
+  width: 220px; height: 220px;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 50%;
   pointer-events: none;
 }
-.shape {
+.hero-section::after {
+  content: '';
   position: absolute;
-  border-radius: 50%;
-  opacity: 0.1;
-}
-.shape-1 {
-  width: 300px; height: 300px;
-  background: radial-gradient(circle, #fff, transparent);
-  top: -80px; right: -60px;
-  animation: float 8s ease-in-out infinite;
-}
-.shape-2 {
-  width: 200px; height: 200px;
-  background: radial-gradient(circle, #fff, transparent);
   bottom: -40px; left: -40px;
-  animation: float 10s ease-in-out infinite reverse;
-}
-.shape-3 {
-  width: 120px; height: 120px;
-  border: 2px solid rgba(255,255,255,0.15);
-  top: 20%; left: 15%;
-  animation: float 6s ease-in-out infinite 1s;
-}
-.shape-4 {
-  width: 80px; height: 80px;
-  border: 2px solid rgba(255,255,255,0.12);
-  bottom: 25%; right: 20%;
-  animation: float 7s ease-in-out infinite 0.5s;
-}
-@keyframes float {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(5deg); }
+  width: 160px; height: 160px;
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 50%;
+  pointer-events: none;
 }
 .hero-content {
   position: relative;
   z-index: 1;
 }
 .hero-title {
-  font-size: 34px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 30px;
   font-weight: 700;
-  margin: 0 0 10px;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  margin: 0 0 8px;
+  letter-spacing: 3px;
 }
 .hero-subtitle {
-  font-size: 16px;
-  opacity: 0.85;
-  margin: 0 0 30px;
+  font-size: 14px;
+  opacity: 0.7;
+  margin: 0 0 28px;
 }
 .hero-search {
   max-width: 520px;
   margin: 0 auto;
   display: flex;
   gap: 8px;
-  background: rgba(255,255,255,0.12);
-  border-radius: 12px;
+  background: rgba(255,255,255,0.10);
+  border-radius: 14px;
   padding: 5px;
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.12);
 }
 .hero-search-input {
   flex: 1;
-  :deep(.el-input__wrapper) {
-    box-shadow: none !important;
-    border-radius: 8px;
-    background: rgba(255,255,255,0.9);
-  }
-  :deep(.el-input__inner) { background: transparent; }
 }
+.hero-search-input :deep(.el-input__wrapper) {
+  box-shadow: none !important;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.88);
+  border: 1px solid transparent;
+}
+.hero-search-input :deep(.el-input__wrapper:hover) {
+  border-color: transparent;
+}
+.hero-search-input :deep(.el-input__inner) { background: transparent; }
 .hero-search-btn {
-  border-radius: 8px;
+  border-radius: 14px;
   min-width: 80px;
   border: none;
   font-weight: 500;
+  background: rgba(255,255,255,0.15);
+  color: #f5f0e0;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+.hero-search-btn:hover {
+  background: rgba(255,255,255,0.25);
 }
 
 .stats-row {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
+  gap: 12px;
   margin-bottom: 28px;
 }
 .stat-card {
   background: #fff;
-  border-radius: 12px;
-  padding: 20px 16px;
+  border-radius: 14px;
+  padding: 18px 14px;
   text-align: center;
-  border: 1px solid #f0f0f0;
+  border: 1px solid #e0d5c0;
   transition: all 0.2s;
   cursor: default;
 }
 .stat-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+  box-shadow: 0 4px 12px rgba(60,40,20,0.08);
   border-color: var(--stat-color);
 }
 .stat-value {
-  font-size: 28px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 24px;
   font-weight: 700;
   color: var(--stat-color);
   line-height: 1.2;
 }
 .stat-label {
-  font-size: 13px;
-  color: #909399;
+  font-size: 12px;
+  color: #8a7a6a;
   margin-top: 4px;
 }
 
 .pinned-card {
   background: #fff;
-  border-radius: 12px;
+  border-radius: 14px;
   margin-bottom: 10px;
-  border: 1px solid #fce8e6;
-  border-left: 4px solid #ea4335;
+  border: 1px solid #e8d8d8;
+  border-left: 4px solid #8a4a4a;
   padding: 16px 20px;
   transition: box-shadow 0.2s;
 }
 .pinned-card:hover {
-  box-shadow: 0 2px 8px rgba(234,67,53,0.08);
+  box-shadow: 0 2px 8px rgba(138,74,74,0.08);
 }
 .pinned-header {
   display: flex;
@@ -317,12 +294,12 @@ onMounted(() => { fetchStats(); fetchAnnouncements() })
 }
 .pinned-meta {
   margin-left: auto;
-  color: #909399;
+  color: #8a7a6a;
   font-size: 12px;
 }
 .pinned-content {
   font-size: 14px;
-  color: #606266;
+  color: #4a4030;
   white-space: pre-wrap;
   line-height: 1.6;
 }
@@ -330,45 +307,46 @@ onMounted(() => { fetchStats(); fetchAnnouncements() })
 .modules-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 16px;
+  gap: 12px;
   margin-bottom: 32px;
 }
 .module-card {
   background: #fff;
   border-radius: 14px;
-  padding: 24px 20px;
+  padding: 22px 18px;
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 16px;
-  border: 1px solid #f0f0f0;
+  gap: 14px;
+  border: 1px solid #e0d5c0;
   transition: all 0.25s;
 }
 .module-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.07);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(60,40,20,0.08);
   border-color: var(--module-color);
 }
 .module-icon-wrap {
-  width: 54px;
-  height: 54px;
+  width: 48px;
+  height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 14px;
-  font-size: 24px;
+  border-radius: 50%;
+  font-size: 22px;
   flex-shrink: 0;
 }
 .module-name {
-  margin: 0 0 4px;
+  margin: 0 0 2px;
+  font-family: 'Noto Serif SC', serif;
   font-size: 16px;
-  font-weight: 600;
-  color: #303133;
+  font-weight: 700;
+  color: #3a4030;
 }
 .module-desc {
   margin: 0;
-  font-size: 13px;
-  color: #909399;
+  font-size: 12px;
+  color: #8a7a6a;
 }
 
 .announcements-section {
@@ -380,34 +358,34 @@ onMounted(() => { fetchStats(); fetchAnnouncements() })
   align-items: center;
   margin-bottom: 12px;
 }
-.section-header h3 { margin: 0; font-size: 16px; font-weight: 600; }
+.section-header h3 { margin: 0; font-family: 'Noto Serif SC', serif; font-size: 16px; font-weight: 600; }
 .announcement-item {
   background: #fff;
-  border-radius: 10px;
+  border-radius: 14px;
   padding: 14px 18px;
   margin-bottom: 8px;
-  border: 1px solid #f0f0f0;
+  border: 1px solid #e0d5c0;
   transition: box-shadow 0.2s;
 }
-.announcement-item:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+.announcement-item:hover { box-shadow: 0 2px 6px rgba(60,40,20,0.06); }
 .announcement-title-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 6px;
 }
-.announcement-title-row strong { font-size: 14px; }
-.announcement-meta { color: #909399; font-size: 12px; white-space: nowrap; margin-left: 12px; }
+.announcement-title-row strong { font-size: 14px; color: #3a4030; }
+.announcement-meta { color: #8a7a6a; font-size: 12px; white-space: nowrap; margin-left: 12px; }
 .announcement-content {
   font-size: 14px;
-  color: #606266;
+  color: #4a4030;
   white-space: pre-wrap;
   line-height: 1.6;
 }
 
 @media (max-width: 640px) {
   .stats-row { grid-template-columns: repeat(2, 1fr); }
-  .hero-title { font-size: 24px; }
+  .hero-title { font-size: 22px; }
   .modules-grid { grid-template-columns: 1fr; }
 }
 </style>

@@ -49,7 +49,7 @@ onMounted(fetchItems)
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
       <div>
         <h2 style="margin: 0 0 4px; font-size: 20px;">二手交易</h2>
-        <p style="margin: 0; color: #909399; font-size: 13px;">买卖二手物品，让资源循环利用</p>
+        <p style="margin: 0; color: #8a7a6a; font-size: 13px;">买卖二手物品，让资源循环利用</p>
       </div>
       <el-button type="primary" @click="router.push('/trades/create')" style="border-radius: 8px;">+ 发布商品</el-button>
     </div>
@@ -63,22 +63,22 @@ onMounted(fetchItems)
       <el-button @click="fetchItems" style="border-radius: 6px;">搜索</el-button>
     </div>
     <div v-loading="loading">
-      <div v-if="items.length === 0 && !loading" style="text-align: center; padding: 60px 0; color: #909399;">
+      <div v-if="items.length === 0 && !loading" style="text-align: center; padding: 60px 0; color: #8a7a6a;">
         <div style="font-size: 40px; margin-bottom: 12px;">🏪</div>
         <p style="font-size: 15px;">暂无商品</p>
         <el-button type="primary" plain @click="router.push('/trades/create')">发布第一个商品</el-button>
       </div>
       <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px;">
-        <div v-for="item in items" :key="item.id" style="background: #fff; border-radius: 12px; border: 1px solid #f0f0f0; padding: 20px; cursor: pointer; transition: all 0.2s;" @click="router.push(`/trades/${item.id}`)" @mouseenter="$event.currentTarget.style.borderColor='#1a73e8'; $event.currentTarget.style.boxShadow='0 4px 12px rgba(26,115,232,0.1)'" @mouseleave="$event.currentTarget.style.borderColor='#f0f0f0'; $event.currentTarget.style.boxShadow='none'">
+        <div v-for="item in items" :key="item.id" style="background: #fff; border-radius: 12px; border: 1px solid #e0d5c0; padding: 20px; cursor: pointer; transition: all 0.2s;" @click="router.push(`/trades/${item.id}`)" @mouseenter="$event.currentTarget.style.borderColor='#1a73e8'; $event.currentTarget.style.boxShadow='0 4px 12px rgba(26,115,232,0.1)'" @mouseleave="$event.currentTarget.style.borderColor='#e0d5c0'; $event.currentTarget.style.boxShadow='none'">
           <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;">
-            <el-tag size="small" style="border-radius: 4px; background: #e6f4ea; color: #34a853; border: none;">{{ item.category || '未分类' }}</el-tag>
+            <el-tag size="small" style="border-radius: 4px; background: #e6ede4; color: #5a7a4a; border: none;">{{ item.category || '未分类' }}</el-tag>
             <el-tag v-if="item.status === 'AVAILABLE'" size="small" type="success" style="border-radius: 4px;">在售</el-tag>
             <el-tag v-else-if="item.status === 'SOLD'" size="small" type="warning" style="border-radius: 4px;">已售</el-tag>
             <el-tag v-else size="small" type="info" style="border-radius: 4px;">下架</el-tag>
           </div>
           <h3 style="margin: 0 0 8px; font-size: 16px; font-weight: 500;">{{ item.title }}</h3>
           <p style="color: #ea4335; font-size: 22px; font-weight: 700; margin: 0 0 12px;">¥{{ item.price }}</p>
-          <div style="display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: #909399;">
+          <div style="display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: #8a7a6a;">
             <span>{{ item.userName || '匿名' }}</span>
             <span>{{ formatTime(item.createdAt) }}</span>
           </div>

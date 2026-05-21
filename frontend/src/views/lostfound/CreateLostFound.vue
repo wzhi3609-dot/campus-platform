@@ -58,9 +58,9 @@ onMounted(async () => {
   <div style="max-width: 640px; margin: 0 auto;">
     <div style="margin-bottom: 24px;">
       <h2 style="margin: 0 0 4px; font-size: 22px;">{{ isEdit ? '编辑信息' : '发布失物招领信息' }}</h2>
-      <p style="margin: 0; color: #909399; font-size: 13px;">填写的联系方式将会显示给查看的用户</p>
+      <p style="margin: 0; color: #8a7a6a; font-size: 13px;">填写的联系方式将会显示给查看的用户</p>
     </div>
-    <div style="background: #fff; border-radius: 12px; border: 1px solid #f0f0f0; padding: 28px;">
+    <div style="background: #fff; border-radius: 12px; border: 1px solid #e0d5c0; padding: 28px;">
       <el-form :model="form" label-position="top" @submit.prevent="handleSubmit">
         <el-form-item label="类型">
           <el-radio-group v-model="form.type">
@@ -75,10 +75,10 @@ onMounted(async () => {
           <el-form-item label="物品图片">
             <el-upload :http-request="handleUpload" :show-file-list="false" accept="image/*" :disabled="uploading">
               <el-button :loading="uploading" style="border-radius: 8px;">点击上传</el-button>
-              <template #tip><span style="margin-left: 8px; font-size: 12px; color: #909399;">支持 jpg/png/gif/webp</span></template>
+              <template #tip><span style="margin-left: 8px; font-size: 12px; color: #8a7a6a;">支持 jpg/png/gif/webp</span></template>
             </el-upload>
             <div v-if="form.image" style="margin-top: 8px;">
-              <div style="position: relative; width: 120px; height: 120px; border-radius: 6px; overflow: hidden; border: 1px solid #e4e7ed;">
+              <div style="position: relative; width: 120px; height: 120px; border-radius: 6px; overflow: hidden; border: 1px solid #e0d5c0;">
                 <img :src="form.image" style="width: 100%; height: 100%; object-fit: cover;" />
                 <span style="position: absolute; top: 2px; right: 6px; font-size: 18px; color: #f56c6c; cursor: pointer;" @click="form.image = ''">×</span>
               </div>

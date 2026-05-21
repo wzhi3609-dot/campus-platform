@@ -52,9 +52,9 @@ onMounted(async () => {
   <div style="max-width: 900px; margin: 0 auto;">
     <div style="margin-bottom: 24px;">
       <h2 style="margin: 0 0 4px; font-size: 22px;">{{ isEdit ? '编辑帖子' : '发帖' }}</h2>
-      <p style="margin: 0; color: #909399; font-size: 13px;">发帖后需要等待管理员审核通过后公开可见</p>
+      <p style="margin: 0; color: #8a7a6a; font-size: 13px;">发帖后需要等待管理员审核通过后公开可见</p>
     </div>
-    <div style="background: #fff; border-radius: 12px; border: 1px solid #f0f0f0; padding: 24px;">
+    <div style="background: #fff; border-radius: 12px; border: 1px solid #e0d5c0; padding: 24px;">
       <el-input v-model="title" placeholder="标题" size="large" style="margin-bottom: 16px;" />
       <div style="border: 1px solid #dcdfe6; border-radius: 8px; margin-bottom: 16px; overflow: hidden;">
         <QuillEditor v-model:content="content" content-type="html" theme="snow" placeholder="写下你的内容..." style="min-height: 300px;" />

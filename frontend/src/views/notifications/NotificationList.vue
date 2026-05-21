@@ -52,26 +52,26 @@ onMounted(fetchNotifications)
   <div style="max-width: 700px; margin: 0 auto;">
     <div style="margin-bottom: 24px;">
       <h2 style="margin: 0 0 4px; font-size: 22px;">消息通知</h2>
-      <p style="margin: 0; color: #909399; font-size: 13px;">查看与你相关的消息</p>
+      <p style="margin: 0; color: #8a7a6a; font-size: 13px;">查看与你相关的消息</p>
     </div>
     <div v-loading="loading">
-      <div v-if="notifications.length === 0 && !loading" style="text-align: center; padding: 60px 0; color: #909399;">
+      <div v-if="notifications.length === 0 && !loading" style="text-align: center; padding: 60px 0; color: #8a7a6a;">
         <div style="font-size: 40px; margin-bottom: 12px;">🔔</div>
         <p style="font-size: 15px;">暂无消息</p>
       </div>
       <div v-for="n in notifications" :key="n.id" style="background: #fff; border-radius: 10px; margin-bottom: 10px; cursor: pointer; transition: all 0.2s; padding: 16px 20px;"
-        :style="{ borderLeft: n.read ? '3px solid transparent' : '3px solid #1a73e8', border: '1px solid #f0f0f0', background: n.read ? '#fff' : '#f8faff' }"
+        :style="{ borderLeft: n.read ? '3px solid transparent' : '3px solid #5c6e3d', border: '1px solid #e0d5c0', background: n.read ? '#fff' : '#f8faff' }"
         @click="goToTarget(n)"
         @mouseenter="$event.currentTarget.style.boxShadow='0 2px 8px rgba(0,0,0,0.06)'"
         @mouseleave="$event.currentTarget.style.boxShadow='none'">
         <div style="display: flex; justify-content: space-between; align-items: center;">
           <div style="display: flex; align-items: center; gap: 8px;">
             <el-tag v-if="!n.read" size="small" type="danger" style="border-radius: 4px;">新</el-tag>
-            <strong :style="{ color: n.read ? '#606266' : '#303133' }">{{ n.title }}</strong>
+            <strong :style="{ color: n.read ? '#4a4030' : '#3a4030' }">{{ n.title }}</strong>
           </div>
-          <span style="color: #909399; font-size: 12px;">{{ formatTime(n.createdAt) }}</span>
+          <span style="color: #8a7a6a; font-size: 12px;">{{ formatTime(n.createdAt) }}</span>
         </div>
-        <p style="color: #606266; margin-top: 6px; font-size: 14px;">{{ n.content }}</p>
+        <p style="color: #4a4030; margin-top: 6px; font-size: 14px;">{{ n.content }}</p>
       </div>
     </div>
     <div style="margin-top: 20px; text-align: center;">

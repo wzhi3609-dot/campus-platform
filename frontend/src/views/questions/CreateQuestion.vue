@@ -42,9 +42,9 @@ onMounted(async () => {
   <div style="max-width: 800px; margin: 0 auto;">
     <div style="margin-bottom: 24px;">
       <h2 style="margin: 0 0 4px; font-size: 22px;">{{ isEdit ? '编辑问题' : '提问' }}</h2>
-      <p style="margin: 0; color: #909399; font-size: 13px;">描述要清晰，方便他人帮助你</p>
+      <p style="margin: 0; color: #8a7a6a; font-size: 13px;">描述要清晰，方便他人帮助你</p>
     </div>
-    <div style="background: #fff; border-radius: 12px; border: 1px solid #f0f0f0; padding: 28px;">
+    <div style="background: #fff; border-radius: 12px; border: 1px solid #e0d5c0; padding: 28px;">
       <el-form :model="form" label-position="top" @submit.prevent="handleSubmit">
         <el-form-item label="标题">
           <el-input v-model="form.title" placeholder="请简要描述你的问题" size="large" />

@@ -90,17 +90,17 @@ onMounted(fetchProfile)
   <div style="max-width: 640px; margin: 0 auto;">
     <div style="margin-bottom: 24px;">
       <h2 style="margin: 0 0 4px; font-size: 22px;">个人中心</h2>
-      <p style="margin: 0; color: #909399; font-size: 13px;">管理你的个人信息和账号</p>
+      <p style="margin: 0; color: #8a7a6a; font-size: 13px;">管理你的个人信息和账号</p>
     </div>
 
-    <div style="background: #fff; border-radius: 12px; border: 1px solid #f0f0f0; padding: 28px; margin-bottom: 20px;">
-      <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid #f0f0f0;">
+    <div style="background: #fff; border-radius: 12px; border: 1px solid #e0d5c0; padding: 28px; margin-bottom: 20px;">
+      <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid #e0d5c0;">
         <el-upload class="avatar-uploader" :show-file-list="false"
           :before-upload="(f) => { handleAvatarUpload({ raw: f }); return false }">
           <el-avatar :size="72" :src="form.avatar" style="cursor: pointer; border: 3px solid #e8f0fe;">
             {{ auth.user?.name?.[0] }}
           </el-avatar>
-          <div style="font-size: 12px; color: #909399; text-align: center; margin-top: 4px;">点击更换</div>
+          <div style="font-size: 12px; color: #8a7a6a; text-align: center; margin-top: 4px;">点击更换</div>
         </el-upload>
         <div>
           <div style="font-size: 18px; font-weight: 600;">{{ auth.user?.name }}</div>
@@ -138,7 +138,7 @@ onMounted(fetchProfile)
       </el-form>
     </div>
 
-    <div style="background: #fff; border-radius: 12px; border: 1px solid #f0f0f0; padding: 28px;">
+    <div style="background: #fff; border-radius: 12px; border: 1px solid #e0d5c0; padding: 28px;">
       <div style="font-size: 18px; font-weight: 600; margin-bottom: 20px;">修改密码</div>
       <el-form label-position="top">
         <el-form-item label="原密码">

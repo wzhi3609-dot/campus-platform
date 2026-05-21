@@ -93,7 +93,7 @@ onMounted(() => {
 <template>
   <div v-if="item" style="max-width: 800px; margin: 0 auto;">
     <el-button text @click="router.back()" style="margin-bottom: 16px; font-size: 14px;">&lt; 返回列表</el-button>
-    <div style="background: #fff; border-radius: 12px; border: 1px solid #f0f0f0; padding: 28px;">
+    <div style="background: #fff; border-radius: 12px; border: 1px solid #e0d5c0; padding: 28px;">
       <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px;">
         <div style="flex: 1;">
           <h1 style="margin: 0 0 4px; font-size: 24px;">{{ item.title }}</h1>
@@ -106,18 +106,18 @@ onMounted(() => {
         </div>
       </div>
       <el-divider style="margin: 20px 0;" />
-      <div style="white-space: pre-wrap; line-height: 1.8; font-size: 15px; color: #303133;">{{ item.description || '暂无描述' }}</div>
+      <div style="white-space: pre-wrap; line-height: 1.8; font-size: 15px; color: #3a4030;">{{ item.description || '暂无描述' }}</div>
       <el-divider style="margin: 20px 0;" />
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; color: #606266; font-size: 14px;">
-        <div style="background: #f5f7fa; padding: 12px; border-radius: 8px;"><strong style="color: #303133;">发布者：</strong>{{ item.userName || '匿名' }}</div>
-        <div style="background: #f5f7fa; padding: 12px; border-radius: 8px;"><strong style="color: #303133;">分类：</strong>{{ item.category || '未分类' }}</div>
-        <div style="background: #f5f7fa; padding: 12px; border-radius: 8px;"><strong style="color: #303133;">联系人：</strong>{{ item.contactPerson || '匿名' }}</div>
-        <div style="background: #f5f7fa; padding: 12px; border-radius: 8px;"><strong style="color: #303133;">联系电话：</strong>{{ item.contactPhone || '未提供' }}</div>
-        <div style="background: #f5f7fa; padding: 12px; border-radius: 8px;"><strong style="color: #303133;">位置：</strong>{{ item.location || '未提供' }}</div>
-        <div style="background: #f5f7fa; padding: 12px; border-radius: 8px;"><strong style="color: #303133;">发布时间：</strong>{{ formatTime(item.createdAt) }}</div>
-        <div style="background: #f5f7fa; padding: 12px; border-radius: 8px;"><strong style="color: #303133;">浏览：</strong>{{ item.viewCount }} 次</div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; color: #4a4030; font-size: 14px;">
+        <div style="background: #f5f0e8; padding: 12px; border-radius: 8px;"><strong style="color: #3a4030;">发布者：</strong>{{ item.userName || '匿名' }}</div>
+        <div style="background: #f5f0e8; padding: 12px; border-radius: 8px;"><strong style="color: #3a4030;">分类：</strong>{{ item.category || '未分类' }}</div>
+        <div style="background: #f5f0e8; padding: 12px; border-radius: 8px;"><strong style="color: #3a4030;">联系人：</strong>{{ item.contactPerson || '匿名' }}</div>
+        <div style="background: #f5f0e8; padding: 12px; border-radius: 8px;"><strong style="color: #3a4030;">联系电话：</strong>{{ item.contactPhone || '未提供' }}</div>
+        <div style="background: #f5f0e8; padding: 12px; border-radius: 8px;"><strong style="color: #3a4030;">位置：</strong>{{ item.location || '未提供' }}</div>
+        <div style="background: #f5f0e8; padding: 12px; border-radius: 8px;"><strong style="color: #3a4030;">发布时间：</strong>{{ formatTime(item.createdAt) }}</div>
+        <div style="background: #f5f0e8; padding: 12px; border-radius: 8px;"><strong style="color: #3a4030;">浏览：</strong>{{ item.viewCount }} 次</div>
       </div>
-      <div v-if="currentUserId === item.userId" style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap; padding-top: 16px; border-top: 1px solid #f0f0f0;">
+      <div v-if="currentUserId === item.userId" style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap; padding-top: 16px; border-top: 1px solid #e0d5c0;">
         <el-button type="primary" plain @click="router.push(`/trades/create?id=${item.id}`)" style="border-radius: 8px;">编辑</el-button>
         <el-button v-if="item.status === 'AVAILABLE'" type="warning" plain @click="updateStatus('SOLD')" style="border-radius: 8px;">标记已售出</el-button>
         <el-button v-else type="success" plain @click="updateStatus('AVAILABLE')" style="border-radius: 8px;">重新上架</el-button>
@@ -127,20 +127,20 @@ onMounted(() => {
     </div>
 
     <!-- 评论区 -->
-    <div style="background: #fff; border-radius: 12px; border: 1px solid #f0f0f0; padding: 24px; margin-top: 20px;">
+    <div style="background: #fff; border-radius: 12px; border: 1px solid #e0d5c0; padding: 24px; margin-top: 20px;">
       <div style="font-size: 18px; font-weight: 600; margin-bottom: 20px;">评论 ({{ commentTotal }})</div>
       <div v-if="currentUserId" style="display: flex; gap: 8px; margin-bottom: 20px;">
         <el-input v-model="newComment" placeholder="写下你的评论..." @keyup.enter="submitComment" />
         <el-button type="primary" :loading="submittingComment" @click="submitComment" style="border-radius: 6px;">发表</el-button>
       </div>
-      <div v-for="c in comments" :key="c.id" style="padding: 12px 0; border-bottom: 1px solid #f0f0f0;">
+      <div v-for="c in comments" :key="c.id" style="padding: 12px 0; border-bottom: 1px solid #e0d5c0;">
         <div style="display: flex; justify-content: space-between; font-size: 13px;">
           <span style="color: #1a73e8; font-weight: 500;">{{ c.userName || '匿名' }}</span>
-          <span style="color: #909399;">{{ formatTime(c.createdAt) }}</span>
+          <span style="color: #8a7a6a;">{{ formatTime(c.createdAt) }}</span>
         </div>
         <div style="margin-top: 6px; line-height: 1.6; font-size: 14px;">{{ c.content }}</div>
       </div>
-      <div v-if="comments.length === 0" style="color: #909399; text-align: center; padding: 24px; font-size: 14px;">暂无评论</div>
+      <div v-if="comments.length === 0" style="color: #8a7a6a; text-align: center; padding: 24px; font-size: 14px;">暂无评论</div>
     </div>
 
     <!-- 举报弹窗 -->

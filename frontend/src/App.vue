@@ -54,7 +54,7 @@ onUnmounted(() => {
     <el-header class="app-header">
       <div class="header-inner">
         <router-link to="/" class="header-logo">
-          <span class="logo-icon">C</span>
+          <span class="logo-icon">互</span>
           <span class="logo-text">校园互助平台</span>
         </router-link>
         <el-menu mode="horizontal" :ellipsis="false" class="header-nav" :default-active="activeMenuIndex">
@@ -104,41 +104,19 @@ body {
 }
 .app-wrapper {
   min-height: 100vh;
-  background:
-    radial-gradient(ellipse at 10% 20%, rgba(26,115,232,0.04) 0%, transparent 50%),
-    radial-gradient(ellipse at 90% 80%, rgba(52,168,83,0.04) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 50%, rgba(249,171,0,0.03) 0%, transparent 50%),
-    #f5f7fa;
+  background: #f5f0e8;
   position: relative;
-}
-.app-wrapper::before {
-  content: '';
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231a73e8' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 0;
 }
 .app-header {
   padding: 0 !important;
-  background: rgba(255,255,255,0.85);
+  background: rgba(255,255,255,0.88);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 1px 0 rgba(0,0,0,0.06), 0 1px 4px rgba(0,0,0,0.04);
+  box-shadow: 0 1px 0 rgba(60,40,20,0.06), 0 1px 4px rgba(60,40,20,0.04);
   position: sticky;
   top: 0;
   z-index: 100;
-  border-bottom: 1px solid rgba(0,0,0,0.04);
-}
-.app-header::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(26,115,232,0.15), rgba(52,168,83,0.15), rgba(249,171,0,0.15), transparent);
+  border-bottom: 1px solid #e0d5c0;
 }
 .header-inner {
   max-width: 1200px;
@@ -157,23 +135,24 @@ body {
   margin-right: 32px;
 }
 .logo-icon {
-  width: 32px;
-  height: 32px;
-  background: linear-gradient(135deg, #1a73e8, #0d47a1);
-  color: #fff;
+  width: 36px;
+  height: 36px;
+  background: #5c6e3d;
+  color: #f5f0e0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 8px;
+  border-radius: 50%;
+  font-family: 'Noto Serif SC', serif;
   font-size: 16px;
   font-weight: 700;
-  box-shadow: 0 2px 6px rgba(26,115,232,0.25);
 }
 .logo-text {
-  color: #1a73e8;
+  color: #3a402a;
+  font-family: 'Noto Serif SC', serif;
   font-size: 18px;
   font-weight: 700;
-  letter-spacing: 0.3px;
+  letter-spacing: 1px;
 }
 .header-nav {
   flex: 1;
@@ -185,16 +164,16 @@ body {
   line-height: 60px;
   font-size: 14px;
   font-weight: 500;
-  color: #606266;
+  color: #6a604a;
   transition: color 0.2s;
 }
 .header-nav .el-menu-item:hover {
-  color: #1a73e8;
+  color: #5c6e3d;
   background: transparent !important;
 }
 .header-nav .el-menu-item.is-active {
-  color: #1a73e8;
-  border-bottom-color: #1a73e8;
+  color: #5c6e3d;
+  border-bottom-color: #5c6e3d;
   font-weight: 600;
 }
 .header-actions {
@@ -217,16 +196,16 @@ body {
   border-radius: 20px !important;
   transition: background 0.2s;
 }
-.user-btn:hover { background: #f0f2f5 !important; }
-.user-avatar { background: #1a73e8; flex-shrink: 0; }
+.user-btn:hover { background: #f0ebe0 !important; }
+.user-avatar { background: #5c6e3d; flex-shrink: 0; }
 .user-name {
   max-width: 80px;
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 14px;
-  color: #303133;
+  color: #3a4030;
 }
-.action-btn { border-radius: 8px !important; }
+.action-btn { border-radius: 20px !important; }
 .admin-link { font-size: 13px; margin-left: 4px; }
 .app-main {
   max-width: 1200px;
@@ -237,13 +216,20 @@ body {
   z-index: 1;
   min-height: calc(100vh - 60px);
 }
-.el-card { border-radius: 12px; border: none; box-shadow: 0 1px 3px rgba(0,0,0,0.06); transition: box-shadow 0.2s, transform 0.2s; }
-.el-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
-.el-button { border-radius: 8px; }
-.el-table { border-radius: 12px; overflow: hidden; }
+.el-card { border-radius: 14px; border: 1px solid #e0d5c0; box-shadow: 0 1px 2px rgba(60,40,20,0.06); transition: box-shadow 0.2s; }
+.el-card:hover { box-shadow: 0 2px 8px rgba(60,40,20,0.08); }
+.el-button { border-radius: 14px; }
+.el-button--primary { --el-button-bg-color: #5c6e3d; --el-button-border-color: #5c6e3d; --el-button-hover-bg-color: #4a5c2e; --el-button-hover-border-color: #4a5c2e; --el-button-active-bg-color: #3a4a20; --el-button-active-border-color: #3a4a20; }
+.el-table { border-radius: 14px; overflow: hidden; }
 .el-pagination { --el-pagination-button-radius: 8px; }
-.el-dialog { border-radius: 12px; }
+.el-pagination .el-pager li.is-active { background-color: #5c6e3d; }
+.el-dialog { border-radius: 16px; }
 .el-tabs__item { font-size: 14px; font-weight: 500; }
 .el-tag { border-radius: 4px; }
-.el-input__wrapper { border-radius: 8px; }
+.el-input__wrapper { border-radius: 10px; box-shadow: 0 0 0 1px #e0d5c0 inset; }
+.el-input__wrapper:hover { box-shadow: 0 0 0 1px #c4b8a0 inset; }
+.el-input__wrapper.is-focus { box-shadow: 0 0 0 1px #5c6e3d inset; }
+.el-divider { border-color: #e8e0d0; }
+.el-menu { --el-menu-text-color: #6a604a; --el-menu-hover-text-color: #5c6e3d; --el-menu-active-color: #5c6e3d; }
+.el-dropdown-menu__item:hover { background-color: #f0ebe0; color: #5c6e3d; }
 </style>

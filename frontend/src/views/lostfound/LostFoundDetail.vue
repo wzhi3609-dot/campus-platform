@@ -72,7 +72,7 @@ onMounted(() => {
     <div v-if="loading && !item" style="min-height: 200px;"></div>
     <div v-if="item">
     <el-button text @click="router.back()" style="margin-bottom: 16px; font-size: 14px;">&lt; 返回列表</el-button>
-    <div style="background: #fff; border-radius: 12px; border: 1px solid #f0f0f0; padding: 28px;">
+    <div style="background: #fff; border-radius: 12px; border: 1px solid #e0d5c0; padding: 28px;">
       <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px;">
         <div style="flex: 1;">
           <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
@@ -85,16 +85,16 @@ onMounted(() => {
         </div>
       </div>
       <el-divider style="margin: 20px 0;" />
-      <div style="white-space: pre-wrap; line-height: 1.8; font-size: 15px; color: #303133;">{{ item.description || '暂无描述' }}</div>
+      <div style="white-space: pre-wrap; line-height: 1.8; font-size: 15px; color: #3a4030;">{{ item.description || '暂无描述' }}</div>
       <el-divider style="margin: 20px 0;" />
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; color: #606266; font-size: 14px;">
-        <div style="background: #f5f7fa; padding: 12px; border-radius: 8px;"><strong style="color: #303133;">发布者：</strong>{{ item.userName || '匿名' }}</div>
-        <div style="background: #f5f7fa; padding: 12px; border-radius: 8px;"><strong style="color: #303133;">地点：</strong>{{ item.location || '未知' }}</div>
-        <div style="background: #f5f7fa; padding: 12px; border-radius: 8px;"><strong style="color: #303133;">联系人：</strong>{{ item.contactPerson || '匿名' }}</div>
-        <div style="background: #f5f7fa; padding: 12px; border-radius: 8px;"><strong style="color: #303133;">联系电话：</strong>{{ item.contactPhone || '未提供' }}</div>
-        <div style="background: #f5f7fa; padding: 12px; border-radius: 8px;"><strong style="color: #303133;">发布时间：</strong>{{ formatTime(item.createdAt) }}</div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; color: #4a4030; font-size: 14px;">
+        <div style="background: #f5f0e8; padding: 12px; border-radius: 8px;"><strong style="color: #3a4030;">发布者：</strong>{{ item.userName || '匿名' }}</div>
+        <div style="background: #f5f0e8; padding: 12px; border-radius: 8px;"><strong style="color: #3a4030;">地点：</strong>{{ item.location || '未知' }}</div>
+        <div style="background: #f5f0e8; padding: 12px; border-radius: 8px;"><strong style="color: #3a4030;">联系人：</strong>{{ item.contactPerson || '匿名' }}</div>
+        <div style="background: #f5f0e8; padding: 12px; border-radius: 8px;"><strong style="color: #3a4030;">联系电话：</strong>{{ item.contactPhone || '未提供' }}</div>
+        <div style="background: #f5f0e8; padding: 12px; border-radius: 8px;"><strong style="color: #3a4030;">发布时间：</strong>{{ formatTime(item.createdAt) }}</div>
       </div>
-      <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap; padding-top: 16px; border-top: 1px solid #f0f0f0;">
+      <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap; padding-top: 16px; border-top: 1px solid #e0d5c0;">
         <template v-if="currentUserId === item.userId">
           <el-button v-if="item.status !== 'RESOLVED'" type="success" plain @click="resolveItem" style="border-radius: 8px;">标记已解决</el-button>
           <el-button type="primary" plain @click="router.push(`/lost-found/create?id=${item.id}`)" style="border-radius: 8px;">编辑</el-button>

@@ -46,7 +46,7 @@ onMounted(fetchItems)
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
       <div>
         <h2 style="margin: 0 0 4px; font-size: 20px;">失物招领</h2>
-        <p style="margin: 0; color: #909399; font-size: 13px;">发布丢失或捡到的物品信息</p>
+        <p style="margin: 0; color: #8a7a6a; font-size: 13px;">发布丢失或捡到的物品信息</p>
       </div>
       <el-button type="primary" @click="router.push('/lost-found/create')" style="border-radius: 8px;">+ 发布信息</el-button>
     </div>
@@ -62,13 +62,13 @@ onMounted(fetchItems)
       </div>
     </div>
     <div v-loading="loading">
-      <div v-if="items.length === 0 && !loading" style="text-align: center; padding: 60px 0; color: #909399;">
+      <div v-if="items.length === 0 && !loading" style="text-align: center; padding: 60px 0; color: #8a7a6a;">
         <div style="font-size: 40px; margin-bottom: 12px;">🔍</div>
         <p style="font-size: 15px;">暂无记录</p>
         <el-button type="primary" plain @click="router.push('/lost-found/create')">发布第一条信息</el-button>
       </div>
       <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px;">
-        <div v-for="item in items" :key="item.id" style="background: #fff; border-radius: 12px; border: 1px solid #f0f0f0; padding: 20px; cursor: pointer; transition: all 0.2s;" @click="router.push(`/lost-found/${item.id}`)" @mouseenter="$event.currentTarget.style.borderColor='#1a73e8'; $event.currentTarget.style.boxShadow='0 4px 12px rgba(26,115,232,0.1)'" @mouseleave="$event.currentTarget.style.borderColor='#f0f0f0'; $event.currentTarget.style.boxShadow='none'">
+        <div v-for="item in items" :key="item.id" style="background: #fff; border-radius: 12px; border: 1px solid #e0d5c0; padding: 20px; cursor: pointer; transition: all 0.2s;" @click="router.push(`/lost-found/${item.id}`)" @mouseenter="$event.currentTarget.style.borderColor='#1a73e8'; $event.currentTarget.style.boxShadow='0 4px 12px rgba(26,115,232,0.1)'" @mouseleave="$event.currentTarget.style.borderColor='#e0d5c0'; $event.currentTarget.style.boxShadow='none'">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
             <div style="display: flex; gap: 6px; align-items: center;">
               <el-tag :type="item.type === 'LOST' ? 'danger' : 'success'" size="small" style="border-radius: 4px;">
@@ -79,7 +79,7 @@ onMounted(fetchItems)
             <el-tag v-if="item.status === 'RESOLVED'" type="info" size="small" style="border-radius: 4px;">已解决</el-tag>
           </div>
           <h3 style="font-size: 16px; margin: 0 0 8px;">{{ item.title }}</h3>
-          <p style="color: #909399; font-size: 13px; margin: 0 0 8px;">
+          <p style="color: #8a7a6a; font-size: 13px; margin: 0 0 8px;">
             <span style="display: inline-flex; align-items: center; gap: 4px;">📍 {{ item.location || '未知地点' }}</span>
           </p>
           <div style="color: #c0c4cc; font-size: 12px;">{{ formatTime(item.createdAt) }}</div>

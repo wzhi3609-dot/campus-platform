@@ -154,15 +154,15 @@ onMounted(() => {
 <template>
   <div v-if="question" style="max-width: 800px; margin: 0 auto;">
     <el-button text @click="router.back()" style="margin-bottom: 16px; font-size: 14px;">&lt; 返回列表</el-button>
-    <div style="background: #fff; border-radius: 12px; border: 1px solid #f0f0f0; padding: 28px; margin-bottom: 24px;">
+    <div style="background: #fff; border-radius: 12px; border: 1px solid #e0d5c0; padding: 28px; margin-bottom: 24px;">
       <div style="display: flex; align-items: flex-start; gap: 16px; margin-bottom: 16px;">
-        <div style="text-align: center; min-width: 72px; background: #f5f7fa; border-radius: 10px; padding: 12px 8px;">
-          <div style="font-size: 28px; font-weight: 700; color: #1a73e8;">{{ question.answerCount || 0 }}</div>
-          <div style="font-size: 12px; color: #909399;">回答</div>
+        <div style="text-align: center; min-width: 72px; background: #f5f0e8; border-radius: 10px; padding: 12px 8px;">
+          <div style="font-size: 28px; font-weight: 700; color: #4a6a8a;">{{ question.answerCount || 0 }}</div>
+          <div style="font-size: 12px; color: #8a7a6a;">回答</div>
         </div>
         <div style="flex: 1;">
           <h1 style="margin: 0 0 8px; font-size: 22px; line-height: 1.4;">{{ question.title }}</h1>
-          <div style="display: flex; align-items: center; gap: 12px; color: #909399; font-size: 13px; flex-wrap: wrap;">
+          <div style="display: flex; align-items: center; gap: 12px; color: #8a7a6a; font-size: 13px; flex-wrap: wrap;">
             <span>{{ question.userName || '匿名' }}</span>
             <span>·</span>
             <span>{{ formatTime(question.createdAt) }}</span>
@@ -173,11 +173,11 @@ onMounted(() => {
         </div>
       </div>
       <el-divider style="margin: 16px 0;" />
-      <div style="white-space: pre-wrap; line-height: 1.8; font-size: 15px; color: #303133;">{{ question.content }}</div>
+      <div style="white-space: pre-wrap; line-height: 1.8; font-size: 15px; color: #3a4030;">{{ question.content }}</div>
       <div v-if="question.tags" style="margin-top: 16px; display: flex; gap: 6px; flex-wrap: wrap;">
-        <el-tag v-for="tag in question.tags.split(',')" :key="tag" size="small" style="border-radius: 4px; background: #e8f0fe; color: #1a73e8; border: none;">{{ tag }}</el-tag>
+        <el-tag v-for="tag in question.tags.split(',')" :key="tag" size="small" style="border-radius: 4px; background: #e6edf3; color: #4a6a8a; border: none;">{{ tag }}</el-tag>
       </div>
-      <div style="margin-top: 20px; display: flex; gap: 12px; align-items: center; padding-top: 16px; border-top: 1px solid #f0f0f0;">
+      <div style="margin-top: 20px; display: flex; gap: 12px; align-items: center; padding-top: 16px; border-top: 1px solid #e0d5c0;">
         <el-button size="small" :type="favorited ? 'warning' : 'default'" @click="toggleFavorite" style="border-radius: 6px;">
           {{ favorited ? '★' : '☆' }} 收藏 {{ favoriteCount }}
         </el-button>
@@ -190,9 +190,9 @@ onMounted(() => {
     <h3 style="font-size: 18px; margin: 0 0 16px; display: flex; align-items: center; gap: 8px;">
       {{ answers.length }} 个回答
     </h3>
-    <div v-for="answer in answers" :key="answer.id" style="background: #fff; border-radius: 10px; border: 1px solid #f0f0f0; padding: 20px; margin-bottom: 12px;">
+    <div v-for="answer in answers" :key="answer.id" style="background: #fff; border-radius: 10px; border: 1px solid #e0d5c0; padding: 20px; margin-bottom: 12px;">
       <div style="white-space: pre-wrap; line-height: 1.8; font-size: 15px;">{{ answer.content }}</div>
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 12px; color: #909399; font-size: 13px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 12px; color: #8a7a6a; font-size: 13px;">
         <span>{{ formatTime(answer.createdAt) }}</span>
         <div style="display: flex; align-items: center; gap: 8px;">
           <el-tag v-if="answer.accepted" type="success" size="small" style="border-radius: 4px;">✓ 已采纳</el-tag>
@@ -201,30 +201,30 @@ onMounted(() => {
       </div>
     </div>
 
-    <div v-if="currentUserId" style="background: #fff; border-radius: 12px; border: 1px solid #f0f0f0; padding: 24px; margin-top: 20px;">
+    <div v-if="currentUserId" style="background: #fff; border-radius: 12px; border: 1px solid #e0d5c0; padding: 24px; margin-top: 20px;">
       <div style="font-weight: 600; font-size: 16px; margin-bottom: 12px;">写回答</div>
       <el-input v-model="newAnswer" type="textarea" :rows="4" placeholder="写下你的回答..." />
       <el-button type="primary" style="margin-top: 12px; border-radius: 8px;" :loading="loading" @click="submitAnswer">提交回答</el-button>
     </div>
-    <div v-else style="background: #f5f7fa; border-radius: 12px; padding: 24px; text-align: center; margin-top: 20px; color: #909399;">
+    <div v-else style="background: #f5f0e8; border-radius: 12px; padding: 24px; text-align: center; margin-top: 20px; color: #8a7a6a;">
       <el-link type="primary" @click="router.push('/login')">登录后可以回答问题</el-link>
     </div>
 
     <!-- 评论区 -->
-    <div style="background: #fff; border-radius: 12px; border: 1px solid #f0f0f0; padding: 24px; margin-top: 20px;">
+    <div style="background: #fff; border-radius: 12px; border: 1px solid #e0d5c0; padding: 24px; margin-top: 20px;">
       <div style="font-size: 18px; font-weight: 600; margin-bottom: 20px;">评论 ({{ commentTotal }})</div>
       <div v-if="currentUserId" style="display: flex; gap: 8px; margin-bottom: 20px;">
         <el-input v-model="newComment" placeholder="写下你的评论..." @keyup.enter="submitComment" />
         <el-button type="primary" :loading="submittingComment" @click="submitComment" style="border-radius: 6px;">发表</el-button>
       </div>
-      <div v-for="c in comments" :key="c.id" style="padding: 12px 0; border-bottom: 1px solid #f0f0f0;">
+      <div v-for="c in comments" :key="c.id" style="padding: 12px 0; border-bottom: 1px solid #e0d5c0;">
         <div style="display: flex; justify-content: space-between; font-size: 13px;">
-          <span style="color: #1a73e8; font-weight: 500;">{{ c.userName || '匿名' }}</span>
-          <span style="color: #909399;">{{ formatTime(c.createdAt) }}</span>
+          <span style="color: #4a6a8a; font-weight: 500;">{{ c.userName || '匿名' }}</span>
+          <span style="color: #8a7a6a;">{{ formatTime(c.createdAt) }}</span>
         </div>
         <div style="margin-top: 6px; line-height: 1.6; font-size: 14px;">{{ c.content }}</div>
       </div>
-      <div v-if="comments.length === 0" style="color: #909399; text-align: center; padding: 24px; font-size: 14px;">暂无评论</div>
+      <div v-if="comments.length === 0" style="color: #8a7a6a; text-align: center; padding: 24px; font-size: 14px;">暂无评论</div>
     </div>
 
     <!-- 举报弹窗 -->

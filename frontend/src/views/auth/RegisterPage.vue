@@ -45,11 +45,11 @@ async function handleRegister() {
   <div style="min-height: calc(100vh - 200px); display: flex; align-items: center; justify-content: center;">
     <div style="width: 420px;">
       <div style="text-align: center; margin-bottom: 28px;">
-        <div style="width: 56px; height: 56px; background: linear-gradient(135deg, #34a853, #1e8e3e); border-radius: 16px; display: inline-flex; align-items: center; justify-content: center; color: #fff; font-size: 24px; font-weight: 700; margin-bottom: 12px;">R</div>
-        <h2 style="margin: 0 0 4px; font-size: 22px;">创建账号</h2>
-        <p style="margin: 0; color: #909399; font-size: 14px;">注册后等待管理员审核即可使用</p>
+        <div style="width: 52px; height: 52px; background: #5c6e3d; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; color: #f5f0e0; font-family: 'Noto Serif SC', serif; font-size: 20px; font-weight: 700; margin-bottom: 12px;">互</div>
+        <h2 style="margin: 0 0 4px; font-family: 'Noto Serif SC', serif; font-size: 20px; color: #3a402a;">创建账号</h2>
+        <p style="margin: 0; color: #8a7a6a; font-size: 14px;">注册后等待管理员审核即可使用</p>
       </div>
-      <el-card shadow="never" style="border: 1px solid #e4e7ed; border-radius: 12px; padding: 8px;">
+      <el-card shadow="never" style="border: 1px solid #e0d5c0; border-radius: 16px; padding: 8px;">
         <div class="register-type-switch">
           <button :class="['type-btn', { active: userType === 'STUDENT' }]" @click="onTypeChange('STUDENT')">
             <span class="type-icon">🎓</span>
@@ -86,46 +86,36 @@ async function handleRegister() {
 <style scoped>
 .register-type-switch {
   display: flex;
-  gap: 8px;
-  margin-bottom: 24px;
-  padding: 5px;
-  background: #f5f6f8;
-  border-radius: 10px;
+  background: #f0ebe0;
+  border-radius: 12px;
+  padding: 3px;
+  margin-bottom: 20px;
 }
 .type-btn {
   flex: 1;
+  padding: 8px;
+  border: none;
+  background: transparent;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #8a7a6a;
+  transition: all 0.2s;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 6px;
-  padding: 10px 0;
-  border: none;
-  border-radius: 7px;
-  background: transparent;
-  color: #909399;
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  outline: none;
-  font-family: inherit;
-}
-.type-btn:hover:not(.active) {
-  color: #606266;
-  background: rgba(255, 255, 255, 0.6);
 }
 .type-btn.active {
   background: #fff;
-  color: #34a853;
+  color: #3a402a;
   font-weight: 600;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 1px 3px rgba(60,40,20,0.08);
 }
-.type-icon {
-  font-size: 16px;
-}
+.type-icon { font-size: 16px; }
 .bottom-link {
   text-align: center;
-  color: #909399;
+  color: #8a7a6a;
   font-size: 14px;
   display: flex;
   align-items: center;

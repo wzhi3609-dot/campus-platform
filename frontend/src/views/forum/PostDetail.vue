@@ -133,9 +133,9 @@ onMounted(() => {
     <div v-if="loading && !post" style="min-height: 200px;"></div>
     <div v-if="post">
     <el-button text @click="router.back()" style="margin-bottom: 16px; font-size: 14px;">&lt; 返回列表</el-button>
-    <div style="background: #fff; border-radius: 12px; border: 1px solid #f0f0f0; padding: 28px; margin-bottom: 24px;">
+    <div style="background: #fff; border-radius: 12px; border: 1px solid #e0d5c0; padding: 28px; margin-bottom: 24px;">
       <h1 style="margin: 0 0 12px; font-size: 24px;">{{ post.title }}</h1>
-      <div style="display: flex; align-items: center; gap: 12px; color: #909399; font-size: 13px; flex-wrap: wrap; margin-bottom: 20px;">
+      <div style="display: flex; align-items: center; gap: 12px; color: #8a7a6a; font-size: 13px; flex-wrap: wrap; margin-bottom: 20px;">
         <span>{{ post.userName || '匿名' }}</span>
         <span>·</span>
         <span>{{ formatTime(post.createdAt) }}</span>
@@ -144,7 +144,7 @@ onMounted(() => {
         <el-tag v-if="post.status === 'PENDING'" type="warning" size="small" style="border-radius: 4px;">待审核</el-tag>
       </div>
       <div style="line-height: 1.8; font-size: 15px;" v-html="post.content"></div>
-      <div style="margin-top: 20px; display: flex; gap: 12px; flex-wrap: wrap; padding-top: 16px; border-top: 1px solid #f0f0f0;">
+      <div style="margin-top: 20px; display: flex; gap: 12px; flex-wrap: wrap; padding-top: 16px; border-top: 1px solid #e0d5c0;">
         <el-button size="small" text type="primary" @click="handleLike" style="border-radius: 6px;">👍 {{ post.likeCount || 0 }}</el-button>
         <el-button size="small" :type="favorited ? 'warning' : 'default'" @click="toggleFavorite" style="border-radius: 6px;">
           {{ favorited ? '★' : '☆' }} 收藏 {{ favoriteCount }}
@@ -155,20 +155,20 @@ onMounted(() => {
       </div>
     </div>
 
-    <div style="background: #fff; border-radius: 12px; border: 1px solid #f0f0f0; padding: 24px;">
+    <div style="background: #fff; border-radius: 12px; border: 1px solid #e0d5c0; padding: 24px;">
       <div style="font-size: 18px; font-weight: 600; margin-bottom: 20px;">评论 ({{ commentTotal }})</div>
       <div v-if="currentUserId" style="display: flex; gap: 8px; margin-bottom: 20px;">
         <el-input v-model="newComment" placeholder="写下你的评论..." @keyup.enter="submitComment" />
         <el-button type="primary" :loading="submittingComment" @click="submitComment" style="border-radius: 6px;">发表</el-button>
       </div>
-      <div v-for="c in comments" :key="c.id" style="padding: 12px 0; border-bottom: 1px solid #f0f0f0;">
+      <div v-for="c in comments" :key="c.id" style="padding: 12px 0; border-bottom: 1px solid #e0d5c0;">
         <div style="display: flex; justify-content: space-between; font-size: 13px;">
           <span style="color: #1a73e8; font-weight: 500;">{{ c.userName || '匿名' }}</span>
-          <span style="color: #909399;">{{ formatTime(c.createdAt) }}</span>
+          <span style="color: #8a7a6a;">{{ formatTime(c.createdAt) }}</span>
         </div>
         <div style="margin-top: 6px; line-height: 1.6; font-size: 14px;">{{ c.content }}</div>
       </div>
-      <div v-if="comments.length === 0" style="color: #909399; text-align: center; padding: 24px; font-size: 14px;">暂无评论，来发表第一条评论吧</div>
+      <div v-if="comments.length === 0" style="color: #8a7a6a; text-align: center; padding: 24px; font-size: 14px;">暂无评论，来发表第一条评论吧</div>
       <div v-if="commentTotal > 20" style="margin-top: 16px; text-align: center;">
         <el-pagination background layout="prev, pager, next" :total="commentTotal" :page-size="20"
           v-model:current-page="commentPage" @current-change="fetchComments" />
